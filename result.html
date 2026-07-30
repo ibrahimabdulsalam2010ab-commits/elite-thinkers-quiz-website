@@ -41,14 +41,13 @@ const score = Number(localStorage.getItem("score"));
 
 const total = questions ? questions.length : 5;
 
-const percentage = Math.round((score/5)*100);
-
+const percentage = Math.round((score / questions.length) * 100);
 document.getElementById("name").textContent=name;
 
 document.getElementById("course").textContent=course;
 
 document.getElementById("score").textContent=
-"Score: "+score+" / 5";
+"Score: " + score + " / " + questions.length;
 
 document.getElementById("percentage").textContent=
 "Percentage: "+percentage+"%";
