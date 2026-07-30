@@ -9,7 +9,8 @@ document.getElementById("studentCourse").textContent = course;
 
 let currentQuestion = 0;
 let score = 0;
-let selectedAnswer = null;
+selectedAnswer = option;
+answers[currentQuestion] = option;
 
 function loadQuestion() {
 
