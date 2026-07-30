@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Result</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 ELITE THINKERS</h1>
+
+<h2>Quiz Completed</h2>
+
+<p><strong>Name:</strong> <span id="name"></span></p>
+
+<p><strong>Course:</strong> <span id="course"></span></p>
+
+<h2 id="score"></h2>
+
+<h2 id="percentage"></h2>
+
+<h2 id="status"></h2>
+
+<button onclick="location.href='index.html'">
+Return Home
+</button>
+
+</div>
+
+<script>
+
+const name = localStorage.getItem("studentName");
+
+const course = localStorage.getItem("studentCourse");
+
+const score = Number(localStorage.getItem("score"));
+
+const total = questions ? questions.length : 5;
+
+const percentage = Math.round((score/5)*100);
+
+document.getElementById("name").textContent=name;
+
+document.getElementById("course").textContent=course;
+
+document.getElementById("score").textContent=
+"Score: "+score+" / 5";
+
+document.getElementById("percentage").textContent=
+"Percentage: "+percentage+"%";
+
+document.getElementById("status").textContent=
+percentage>=50 ? "✅ PASS" : "❌ FAIL";
+
+</script>
+
+<script src="questions.js"></script>
+
+</body>
+  </html>
