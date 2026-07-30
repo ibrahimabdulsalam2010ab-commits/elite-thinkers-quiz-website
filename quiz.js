@@ -1,3 +1,6 @@
+if (!localStorage.getItem("studentName")) {
+    window.location.href = "index.html";
+}
 const name = localStorage.getItem("studentName");
 const course = localStorage.getItem("studentCourse");
 
