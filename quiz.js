@@ -22,6 +22,28 @@ function loadQuestion() {
 
     const optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
+    questions[currentQuestion].options.forEach(option => {
+    const button = document.createElement("button");
+    button.textContent = option;
+
+    if (answers[currentQuestion] === option) {
+        button.style.backgroundColor = "#4CAF50";
+        selectedAnswer = option;
+    }
+
+    button.onclick = () => {
+        selectedAnswer = option;
+        answers[currentQuestion] = option;
+
+        document.querySelectorAll("#options button").forEach(btn => {
+            btn.style.backgroundColor = "";
+        });
+
+        button.style.backgroundColor = "#4CAF50";
+    };
+
+    optionsDiv.appendChild(button);
+});
 
     questions[currentQuestion].options.forEach(option => {
 
