@@ -63,16 +63,20 @@ document.getElementById("nextBtn").onclick = function(){
 
     currentQuestion++;
 
-    if(currentQuestion < questions.length){
+    currentQuestion++;
 
-        loadQuestion();
+if(currentQuestion < questions.length){
 
-    }else{
-
-        localStorage.setItem("score", score);
-
-        window.location.href = "result.html";
-
+    if(currentQuestion === questions.length - 1){
+        document.getElementById("nextBtn").textContent = "Finish Quiz";
     }
 
-};
+    loadQuestion();
+
+}else{
+
+    localStorage.setItem("score", score);
+
+    window.location.href = "result.html";
+
+}
