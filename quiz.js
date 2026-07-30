@@ -4,38 +4,75 @@ const course = localStorage.getItem("studentCourse");
 document.getElementById("studentName").textContent = name;
 document.getElementById("studentCourse").textContent = course;
 
-let minutes = 20;
-let seconds = 0;
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = null;
 
-const timer = setInterval(() => {
+function loadQuestion() {
 
-    if (seconds === 0) {
-        if (minutes === 0) {
-            clearInterval(timer);
-            alert("Time is up!");
-            window.location.href = "result.html";
-            return;
-        }
+    document.getElementById("questionNumber").textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
 
-        minutes--;
-        seconds = 59;
-    } else {
-        seconds--;
-    }
+    document.getElementById("question").textContent =
+        questions[currentQuestion].question;
 
-    document.getElementById("timer").textContent =
-        `Time Left: ${minutes}:${seconds.toString().padStart(2,"0")}`;
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
 
-},1000);
+    questions[currentQuestion].options.forEach(option => {
+
+        const button = document.createElement("button");
+
+        button.textContent = option;
+
+        button.style.display = "block";
+        button.style.width = "100%";
+        button.style.margin = "10px 0";
+
+        button.onclick = function(){
+
+            selectedAnswer = option;
+
+        };
+
+        optionsDiv.appendChild(button);
+
+    });
+
+}
+
+loadQuestion();
 
 document.getElementById("nextBtn").onclick = function(){
-    alert("Next question feature coming next.");
-}
 
-document.getElementById("submitBtn").onclick = function(){
+    if(selectedAnswer === null){
 
-    if(confirm("Submit your quiz?")){
-        window.location.href="result.html";
+        alert("Please select an answer.");
+
+        return;
+
     }
 
-}
+    if(selectedAnswer === questions[currentQuestion].answer){
+
+        score++;
+
+    }
+
+    selectedAnswer = null;
+
+    currentQuestion++;
+
+    if(currentQuestion < questions.length){
+
+        loadQuestion();
+
+    }else{
+
+        localStorage.setItem("score", score);
+
+        window.location.href = "result.html";
+
+    }
+
+};
