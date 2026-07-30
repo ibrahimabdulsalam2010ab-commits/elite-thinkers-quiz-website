@@ -72,7 +72,27 @@ if(currentQuestion < questions.length){
     }
 
     loadQuestion();
+const palette = document.getElementById("palette");
+palette.innerHTML = "";
 
+for (let i = 0; i < questions.length; i++) {
+    const btn = document.createElement("button");
+
+    btn.textContent = i + 1;
+
+    if (i === currentQuestion) {
+        btn.style.background = "#0d6efd";
+        btn.style.color = "white";
+    }
+
+    btn.onclick = function () {
+        currentQuestion = i;
+        selectedAnswer = null;
+        loadQuestion();
+    };
+
+    palette.appendChild(btn);
+}
 }else{
 
     localStorage.setItem("score", score);
