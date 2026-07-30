@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE THINKERS QUIZ WEBSITE</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎓 ELITE THINKERS</h1>
+    <h2>Quiz Website</h2>
+
+    <p class="welcome">
+        Welcome! Please enter your details to begin the quiz.
+    </p>
+
+    <form id="loginForm">
+
+        <label>Full Name</label>
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+        >
+
+        <label>Course of Study</label>
+
+        <select id="course" required>
+
+            <option value="">Select Course</option>
+
+            <option>Mechatronics Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Computer Engineering</option>
+            <option>Computer Science</option>
+            <option>Accounting</option>
+            <option>Business Administration</option>
+            <option>Economics</option>
+            <option>Medicine</option>
+            <option>Law</option>
+            <option>Other</option>
+
+        </select>
+
+        <button type="submit">
+            Start Quiz
+        </button>
+
+    </form>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
